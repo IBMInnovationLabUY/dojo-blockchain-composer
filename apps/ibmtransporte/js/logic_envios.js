@@ -1,4 +1,3 @@
-var apiEndpoint = "http://192.168.56.101:3000";
 var containers = [];
 var containers_index = [];
 var envios = [];
@@ -75,7 +74,7 @@ function listarEnvios() {
                     if (!isEnviada) {
 
                         //Agregamos a la tabla y asociamos la función enviar carga al boton
-                        $("#tableEnviosBody").append('<tr><th scope="row">' + (i + 1) + '</th><td>' + containers[data[i].carga].idActivo + '</td><td>IBM Toys</td><td>IBM Transporte</td><td>' + new Date(data[i].timestamp).toLocaleString() + '</td><td><button type="button" class="btn btn-outline-success" value="' + data[i].carga + '" id="container' + containers[data[i].carga].idActivo + '"><img src="../../assets/svg/location.svg"></button></td></tr>');
+                        $("#tableEnviosBody").append('<tr><th scope="row">' + containers[data[i].carga].idActivo + '</th><td>IBM Toys</td><td>IBM Transporte</td><td>' + new Date(data[i].timestamp).toLocaleString() + '</td><td><button type="button" class="btn btn-outline-success" value="' + data[i].carga + '" id="container' + containers[data[i].carga].idActivo + '"><img src="../../assets/svg/location.svg"></button></td></tr>');
 
                         $("#container" + containers[data[i].carga].idActivo + "").click(function() {
 

@@ -28,7 +28,7 @@ function listarContainers() {
 
         }
     }).fail(function(jqXHR, textStatus, errorThrown) {
-        alert("ERROR REST: Error al listar la información de los container")
+        alert("ERROR REST: Error al listar la información del container")
     }).always(function() {
         $("#imgLoading").hide();
     });
@@ -76,26 +76,20 @@ function listarRecibidos() {
 
             for (var i = 0; i < data.length; i++) {
 
-                //Si el envío lo realicé yo a travéz de IBM Transporte y ya está en su destino
-                if (containers[data[i].carga].origen == "resource:org.acme.sample.VendedorJuguetes#1" && containers[data[i].carga].almacenado == containers[data[i].carga].destino && data[i].desde == "resource:org.acme.sample.Transporte#1" ) {
+                //Si el envío fue destinado a mi y no lo pague aún
+                if (data[i].hacia == "resource:org.acme.sample.Distribuidor#1" && pagos[data[i].carga] != undefined) {
 
-                    var isPago = "No";
-                    var fechaPago = "-";
-
-                    if (pagos[data[i].carga] != undefined) {
-                        isPago = "Si";
-                        fechaPago = new Date(pagos[data[i].carga].timestamp).toLocaleString();
-                    }
+                    envios[data[i].carga] = data[i];
 
                     //Agregamos a la tabla y asociamos la función pagar al boton
-                    $("#tableEnviosBody").append('<tr><th scope="row">' + containers[data[i].carga].idActivo + '</th><td>Pepe y Asociados</td><td>' + containers[data[i].carga].costo + '</td><td>' + containers[data[i].carga].descripcion + '</td><td>' + fechaPago + '</td><td>' + isPago + '</td></tr>');
+                    $("#tableEnviosBody").append('<tr><th scope="row">' + containers[data[i].carga].idActivo + '</th><td>IBM Toys</td><td>IBM Transporte</td><td>' + new Date(data[i].timestamp).toLocaleString() + '</td><td>' + containers[data[i].carga].costo + '</td><td>' + containers[data[i].carga].descripcion + '</td></tr>');
 
                 }
             }
 
         }
     }).fail(function(jqXHR, textStatus, errorThrown) {
-        alert("ERROR REST: No se pudieron listar los envios en destino")
+        alert("ERROR REST: No se pudieron listar los envios")
     }).always(function() {
         $("#imgLoading").hide();
     });;
