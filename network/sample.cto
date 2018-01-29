@@ -1,0 +1,35 @@
+namespace org.acme.sample
+
+asset Dinero identified by idActivo {
+  o String idActivo
+  o Integer monto
+}
+
+asset ContainerJuguetes identified by idActivo{
+  o String idActivo
+  o String descripcion
+  o Integer costo
+  --> Empresa almacenado
+  --> Empresa destino
+  --> Empresa origen
+}
+
+abstract participant Empresa identified by idEmpresa {
+  o String idEmpresa
+  o String nombre
+  --> Dinero dinero
+}
+
+participant VendedorJuguetes extends Empresa{}
+participant Distribuidor extends Empresa{}
+participant Transporte extends Empresa{}
+
+transaction TransferirCarga {
+  --> ContainerJuguetes carga
+  --> Empresa desde
+  --> Empresa hacia
+}
+
+transaction PagarEnvio{
+  --> ContainerJuguetes envio
+}

@@ -88,7 +88,7 @@ function listarRecibidos() {
                     }
 
                     //Agregamos a la tabla y asociamos la función pagar al boton
-                    $("#tableEnviosBody").append('<tr><th scope="row">' + containers[data[i].carga].idActivo + '</th><td>Pepe y Asociados</td><td>' + containers[data[i].carga].costo + '</td><td>' + containers[data[i].carga].descripcion + '</td><td>' + fechaPago + '</td><td>' + isPago + '</td></tr>');
+                    $("#tableEnviosBody").append('<tr><th scope="row">' + containers[data[i].carga].idActivo + '</th><td>Pepe y Asociados</td><td>$' + containers[data[i].carga].costo + '</td><td>' + containers[data[i].carga].descripcion + '</td><td>' + fechaPago + '</td><td>' + isPago + '</td></tr>');
 
                 }
             }

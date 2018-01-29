@@ -2,6 +2,7 @@
 
 [NOTE]
 ====
+Esta aplicación esta diseñada como ejemplo y utiliza la red realizada en el Dojo de Blockchain con sus respectivos participantes, activos y transacciones. Se pueden necesitar cambios para otra configuración de la red. +
 Cualquier consulta o sugerencia por favor dirigirse a:
 Marcos.Macedo@ibm.com
 ====

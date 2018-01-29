@@ -1,0 +1,12 @@
+query verTodosLosContainers {
+  description: "Muestra un historico de todas las órdenes incluyendo las que estan en tránsito"
+  statement:
+ 	SELECT org.acme.sample.ContainerJuguetes
+}
+
+query informacionDeContainer {
+	description: "Ver la información de un container de juguetes"
+  	statement:
+  		SELECT org.acme.sample.ContainerJuguetes
+  		WHERE (idActivo == _$idActivoParam)
+}
